@@ -1,0 +1,131 @@
+nohup: ignoring input
+WARNING:tensorflow:
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+Traceback (most recent call last):
+  File "run.py", line 17, in <module>
+    from models.models import get_model
+  File "/home/wrjs/pc/science/Point-GNN-master/models/models.py", line 9, in <module>
+    from models import gnn
+  File "/home/wrjs/pc/science/Point-GNN-master/models/gnn.py", line 8, in <module>
+    import layers
+ModuleNotFoundError: No module named 'layers'
+nohup: ignoring input
+WARNING:tensorflow:
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+Traceback (most recent call last):
+  File "run.py", line 84, in <module>
+    num_classes=config['num_classes'])
+  File "/home/wrjs/pc/science/Point-GNN-master/dataset/kitti_dataset.py", line 205, in __init__
+    self._file_list = self._read_index_file(index_filename)
+  File "/home/wrjs/pc/science/Point-GNN-master/dataset/kitti_dataset.py", line 386, in _read_index_file
+    with open(index_filename, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/light/pc/kitti/3DOP_splits/val.txt'
+nohup: ignoring input
+WARNING:tensorflow:
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+WARNING:tensorflow:From run.py:117: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/wrjs/pc/science/Point-GNN-master/models/models.py:128: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/wrjs/pc/science/Point-GNN-master/models/models.py:128: The name tf.AUTO_REUSE is deprecated. Please use tf.compat.v1.AUTO_REUSE instead.
+
+WARNING:tensorflow:From /home/wrjs/.local/lib/python3.6/site-packages/tensorflow_core/contrib/layers/python/layers/layers.py:1866: Layer.apply (from tensorflow.python.keras.engine.base_layer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `layer.__call__` method instead.
+WARNING:tensorflow:From run.py:192: The name tf.train.Saver is deprecated. Please use tf.compat.v1.train.Saver instead.
+
+WARNING:tensorflow:From run.py:193: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From run.py:194: The name tf.GPUOptions is deprecated. Please use tf.compat.v1.GPUOptions instead.
+
+WARNING:tensorflow:From run.py:195: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From run.py:196: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+2020-12-18 16:30:40.600143: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2020-12-18 16:30:40.638308: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200000000 Hz
+2020-12-18 16:30:40.644998: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5bfde90 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-18 16:30:40.645074: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-18 16:30:40.650656: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-12-18 16:30:42.931379: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x668e180 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-12-18 16:30:42.931468: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931490: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (1): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931507: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (2): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931522: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (3): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931539: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (4): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931553: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (5): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931568: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (6): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.931583: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (7): GeForce RTX 2080 Ti, Compute Capability 7.5
+2020-12-18 16:30:42.983227: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:1a:00.0
+2020-12-18 16:30:42.985856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:1b:00.0
+2020-12-18 16:30:42.988438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 2 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:1d:00.0
+2020-12-18 16:30:42.991021: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 3 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:1e:00.0
+2020-12-18 16:30:42.993541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 4 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:3d:00.0
+2020-12-18 16:30:42.995314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 5 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:3e:00.0
+2020-12-18 16:30:42.997064: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 6 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:40:00.0
+2020-12-18 16:30:42.998845: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 7 with properties: 
+name: GeForce RTX 2080 Ti major: 7 minor: 5 memoryClockRate(GHz): 1.545
+pciBusID: 0000:41:00.0
+2020-12-18 16:30:42.999166: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:42.999334: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:42.999471: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:42.999638: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:42.999768: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:42.999901: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-10.2/lib64:/home/wrjs/anaconda3/lib:
+2020-12-18 16:30:43.070385: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-12-18 16:30:43.070426: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1641] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-12-18 16:30:43.070525: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-18 16:30:43.070564: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 2 3 4 5 6 7 
+2020-12-18 16:30:43.070584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N N N N N N N N 
+2020-12-18 16:30:43.070600: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   N N N N N N N N 
+2020-12-18 16:30:43.070616: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 2:   N N N N N N N N 
+2020-12-18 16:30:43.070632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 3:   N N N N N N N N 
+2020-12-18 16:30:43.070649: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 4:   N N N N N N N N 
+2020-12-18 16:30:43.070665: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 5:   N N N N N N N N 
+2020-12-18 16:30:43.070681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 6:   N N N N N N N N 
+2020-12-18 16:30:43.070698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 7:   N N N N N N N N 
+WARNING:tensorflow:From run.py:197: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+WARNING:tensorflow:From run.py:197: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From run.py:198: The name tf.local_variables is deprecated. Please use tf.compat.v1.local_variables instead.
+
+  0%|          | 0/3769 [00:00<?, ?it/s]2020-12-18 16:30:44.222070: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 183450112 exceeds 10% of system memory.
+2020-12-18 16:30:44.249919: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 429961200 exceeds 10% of system memory.
+2020-12-18 16:30:44.458354: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 955500000 exceeds 10% of system memory.
+2020-12-18 16:30:44.598854: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 965055000 exceeds 10% of system memory.
+2020-12-18 16:30:44.729956: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 955500000 exceeds 10% of system memory.
+  0%|          | 1/3769 [00:03<3:23:05,  3.23s/it]  0%|          | 2/3769 [00:04<2:55:05,  2.79s/it]  0%|          | 3/3769 [00:07<2:48:21,  2.68s/it]  0%|          | 4/3769 [00:10<2:59:32,  2.86s/it]  0%|          | 5/3769 [00:12<2:42:07,  2.58s/it]  0%|          | 6/3769 [00:14<2:28:28,  2.37s/it]  0%|          | 7/3769 [00:16<2:21:45,  2.26s/it]  0%|          | 8/3769 [00:18<2:11:03,  2.09s/it]  0%|          | 9/3769 [00:20<2:18:04,  2.20s/it]  0%|          | 10/3769 [00:22<2:15:00,  2.15s/it]  0%|          | 11/3769 [00:25<2:24:06,  2.30s/it]  0%|          | 12/3769 [00:28<2:32:27,  2.43s/it]  0%|          | 13/3769 [00:30<2:25:35,  2.33s/it]  0%|          | 14/3769 [00:32<2:30:54,  2.41s/it]  0%|          | 15/3769 [00:35<2:29:43,  2.39s/it]  0%|          | 16/3769 [00:37<2:25:06,  2.32s/it]  0%|          | 17/3769 [00:39<2:22:15,  2.27s/it]  0%|          | 18/3769 [00:41<2:19:12,  2.23s/it]  1%|          | 19/3769 [00:43<2:17:54,  2.21s/it]  1%|          | 20/3769 [00:45<2:09:32,  2.07s/it]  1%|          | 21/3769 [00:48<2:19:44,  2.24s/it]  1%|          | 22/3769 [00:50<2:19:13,  2.23s/it]  1%|          | 23/3769 [00:52<2:25:16,  2.33s/it]  1%|          | 24/3769 [00:54<2:18:04,  2.21s/it]  1%|          | 25/3769 [00:56<2:10:39,  2.09s/it]  1%|          | 26/3769 [00:59<2:17:51,  2.21s/it]  1%|          | 27/3769 [01:00<2:07:13,  2.04s/it]  1%|          | 28/3769 [01:03<2:14:09,  2.15s/it]  1%|          | 29/3769 [01:05<2:15:41,  2.18s/it]  1%|          | 30/3769 [01:08<2:25:57,  2.34s/it]  1%|          | 31/3769 [01:10<2:23:31,  2.30s/it]  1%|          | 32/3769 [01:12<2:17:31,  2.21s/it]  1%|          | 33/3769 [01:14<2:10:27,  2.10s/it]  1%|          | 34/3769 [01:16<2:19:15,  2.24s/it]  1%|          | 35/3769 [01:18<2:14:45,  2.17s/it]  1%|          | 36/3769 [01:21<2:20:13,  2.25s/it]  1%|          | 37/3769 [01:23<2:20:53,  2.27s/it]  1%|          | 38/3769 [01:25<2:25:12,  2.34s/it]  1%|          | 39/3769 [01:28<2:24:29,  2.32s/it]  1%|          | 40/3769 [01:31<2:49:22,  2.73s/it]  1%|          | 41/3769 [01:34<2:42:24,  2.61s/it]  1%|          | 42/3769 [01:36<2:33:47,  2.48s/it]  1%|          | 43/3769 [01:39<2:40:10,  2.58s/it]  1%|          | 44/3769 [01:42<2:46:14,  2.68s/it]  1%|          | 45/3769 [01:45<2:53:08,  2.79s/it]  1%|          | 46/3769 [01:47<2:51:59,  2.77s/it]  1%|          | 47/3769 [01:50<2:46:50,  2.69s/it]  1%|▏         | 48/3769 [01:53<2:49:43,  2.74s/it]  1%|▏         | 49/3769 [01:55<2:45:05,  2.66s/it]  1%|▏         | 50/3769 [01:58<2:55:05,  2.82s/it]  1%|▏         | 51/3769 [02:01<2:42:23,  2.62s/it]  1%|▏         | 52/3769 [02:04<2:53:41,  2.80s/it]  1%|▏         | 53/3769 [02:06<2:43:53,  2.65s/it]  1%|▏         | 54/3769 [02:09<2:54:08,  2.81s/it]  1%|▏         | 55/3769 [02:13<3:06:42,  3.02s/it]  1%|▏         | 56/3769 [02:17<3:29:32,  3.39s/it]  2%|▏         | 57/3769 [02:19<3:11:19,  3.09s/it]  2%|▏         | 58/3769 [02:22<3:06:02,  3.01s/it]  2%|▏         | 59/3769 [02:25<3:05:32,  3.00s/it]  2%|▏         | 60/3769 [02:29<3:10:54,  3.09s/it]  2%|▏         | 61/3769 [02:31<3:05:58,  3.01s/it]  2%|▏         | 62/3769 [02:33<2:48:06,  2.72s/it]  2%|▏         | 63/3769 [02:36<2:44:06,  2.66s/it]  2%|▏         | 64/3769 [02:38<2:39:54,  2.59s/it]  2%|▏         | 65/3769 [02:40<2:26:26,  2.37s/it]  2%|▏         | 66/3769 [02:42<2:19:10,  2.26s/it]  2%|▏         | 67/3769 [02:45<2:21:26,  2.29s/it]  2%|▏         | 68/3769 [02:47<2:19:56,  2.27s/it]  2%|▏         | 69/3769 [02:49<2:15:53,  2.20s/it]  2%|▏         | 70/3769 [02:51<2:06:50,  2.06s/it]  2%|▏         | 71/3769 [02:53<2:09:35,  2.10s/it]  2%|▏         | 72/3769 [02:55<2:09:39,  2.10s/it]  2%|▏         | 73/3769 [02:58<2:31:14,  2.46s/it]  2%|▏         | 74/3769 [03:00<2:20:45,  2.29s/it]  2%|▏         | 75/3769 [03:03<2:25:33,  2.36s/it]  2%|▏         | 76/3769 [03:05<2:19:55,  2.27s/it]  2%|▏         | 77/3769 [03:07<2:13:41,  2.17s/it]  2%|▏         | 78/3769 [03:09<2:12:04,  2.15s/it]  2%|▏         | 79/3769 [03:10<2:04:21,  2.02s/it]  2%|▏         | 80/3769 [03:13<2:11:05,  2.13s/it]  2%|▏         | 81/3769 [03:16<2:27:58,  2.41s/it]  2%|▏         | 82/3769 [03:18<2:21:11,  2.30s/it]  2%|▏         | 83/3769 [03:20<2:12:14,  2.15s/it]  2%|▏         | 84/3769 [03:23<2:24:28,  2.35s/it]  2%|▏         | 85/3769 [03:26<2:35:56,  2.54s/it]  2%|▏         | 86/3769 [03:28<2:35:50,  2.54s/it]  2%|▏         | 87/3769 [03:30<2:27:02,  2.40s/it]  2%|▏         | 88/3769 [03:32<2:22:06,  2.32s/it]  2%|▏         | 89/3769 [03:35<2:22:30,  2.32s/it]  2%|▏         | 90/3769 [03:37<2:23:57,  2.35s/it]  2%|▏         | 91/3769 [03:39<2:15:07,  2.20s/it]  2%|▏         | 92/3769 [03:41<2:07:21,  2.08s/it]  2%|▏         | 93/3769 [03:44<2:26:37,  2.39s/it]  2%|▏         | 94/3769 [03:46<2:25:45,  2.38s/it]  3%|▎         | 95/3769 [03:48<2:13:02,  2.17s/it]  3%|▎         | 96/3769 [03:50<2:16:45,  2.23s/it]  3%|▎         | 97/3769 [03:52<2:14:19,  2.19s/it]  3%|▎         | 98/3769 [03:55<2:21:30,  2.31s/it]  3%|▎         | 99/3769 [03:57<2:10:08,  2.13s/it]  3%|▎         | 100/3769 [03:58<2:00:43,  1.97s/it]  3%|▎         | 101/3769 [04:00<1:55:29,  1.89s/it]  3%|▎         | 102/3769 [04:02<1:56:30,  1.91s/it]  3%|▎         | 103/3769 [04:04<2:02:03,  2.00s/it]  3%|▎         | 104/3769 [04:06<2:08:56,  2.11s/it]  3%|▎         | 105/3769 [04:09<2:20:39,  2.30s/it]  3%|▎         | 106/3769 [04:11<2:18:51,  2.27s/it]  3%|▎         | 107/3769 [04:13<2:15:15,  2.22s/it]  3%|▎         | 108/3769 [04:16<2:28:01,  2.43s/it]  3%|▎         | 109/3769 [04:18<2:14:59,  2.21s/it]  3%|▎         | 110/3769 [04:21<2:27:48,  2.42s/it]  3%|▎         | 111/3769 [04:23<2:26:14,  2.40s/it]  3%|▎         | 112/3769 [04:26<2:21:28,  2.32s/it]  3%|▎         | 113/3769 [04:29<2:33:45,  2.52s/it]  3%|▎         | 114/3769 [04:31<2:36:34,  2.57s/it]  3%|▎         | 115/3769 [04:34<2:33:40,  2.52s/it]  3%|▎         | 116/3769 [04:36<2:33:19,  2.52s/it]  3%|▎         | 117/3769 [04:38<2:18:53,  2.28s/it]  3%|▎         | 118/3769 [04:40<2:19:00,  2.28s/it]  3%|▎         | 119/3769 [04:43<2:28:06,  2.43s/it]  3%|▎         | 120/3769 [04:45<2:22:03,  2.34s/it]  3%|▎         | 121/3769 [04:48<2:26:34,  2.41s/it]  3%|▎         | 122/3769 [04:49<2:12:11,  2.17s/it]  3%|▎         | 123/3769 [04:51<2:02:52,  2.02s/it]  3%|▎         | 124/3769 [04:53<2:08:26,  2.11s/it]  3%|▎         | 125/3769 [04:56<2:16:41,  2.25s/it]  3%|▎         | 126/3769 [04:58<2:14:32,  2.22s/it]  3%|▎         | 127/3769 [05:00<2:14:22,  2.21s/it]  3%|▎         | 128/3769 [05:02<2:05:49,  2.07s/it]  3%|▎         | 129/3769 [05:04<2:11:08,  2.16s/it]  3%|▎         | 130/3769 [05:06<2:10:08,  2.15s/it]  3%|▎         | 131/3769 [05:09<2:14:46,  2.22s/it]  4%|▎         | 132/3769 [05:11<2:15:05,  2.23s/it]  4%|▎         | 133/3769 [05:14<2:22:03,  2.34s/it]  4%|▎         | 134/3769 [05:17<2:41:34,  2.67s/it]  4%|▎         | 135/3769 [05:19<2:37:54,  2.61s/it]  4%|▎         | 136/3769 [05:22<2:34:05,  2.54s/it]  4%|▎         | 137/3769 [05:24<2:18:33,  2.29s/it]  4%|▎         | 138/3769 [05:26<2:22:15,  2.35s/it]  4%|▎         | 139/3769 [05:28<2:20:52,  2.33s/it]  4%|▎         | 140/3769 [05:30<2:13:53,  2.21s/it]  4%|▎         | 141/3769 [05:32<2:07:50,  2.11s/it]  4%|▍         | 142/3769 [05:35<2:17:22,  2.27s/it]  4%|▍         | 143/3769 [05:37<2:11:15,  2.17s/it]  4%|▍         | 144/3769 [05:38<2:02:16,  2.02s/it]  4%|▍         | 145/3769 [05:40<1:53:33,  1.88s/it]  4%|▍         | 146/3769 [05:42<2:00:00,  1.99s/it]  4%|▍         | 147/3769 [05:45<2:13:07,  2.21s/it]  4%|▍         | 148/3769 [05:47<2:12:55,  2.20s/it]  4%|▍         | 149/3769 [05:49<2:10:34,  2.16s/it]  4%|▍         | 150/3769 [05:51<2:06:15,  2.09s/it]  4%|▍         | 151/3769 [05:53<2:03:14,  2.04s/it]  4%|▍         | 152/3769 [05:55<2:07:50,  2.12s/it]  4%|▍         | 153/3769 [05:58<2:13:14,  2.21s/it]  4%|▍         | 154/3769 [06:00<2:16:16,  2.26s/it]  4%|▍         | 155/3769 [06:02<2:06:49,  2.11s/it]  4%|▍         | 156/3769 [06:04<2:04:36,  2.07s/it]  4%|▍         | 157/3769 [06:06<2:04:25,  2.07s/it]  4%|▍         | 158/3769 [06:08<1:59:44,  1.99s/it]  4%|▍         | 159/3769 [06:10<2:00:50,  2.01s/it]  4%|▍         | 160/3769 [06:12<2:04:48,  2.07s/it]  4%|▍         | 161/3769 [06:15<2:14:01,  2.23s/it]  4%|▍         | 162/3769 [06:16<2:03:08,  2.05s/it]  4%|▍         | 163/3769 [06:18<2:02:25,  2.04s/it]  4%|▍         | 164/3769 [06:20<2:03:21,  2.05s/it]  4%|▍         | 165/3769 [06:23<2:07:09,  2.12s/it]  4%|▍         | 166/3769 [06:24<1:56:06,  1.93s/it]  4%|▍         | 167/3769 [06:26<2:03:09,  2.05s/it]  4%|▍         | 168/3769 [06:29<2:14:02,  2.23s/it]  4%|▍         | 169/3769 [06:31<2:06:20,  2.11s/it]  5%|▍         | 170/3769 [06:33<2:06:15,  2.10s/it]  5%|▍         | 171/3769 [06:35<2:09:31,  2.16s/it]  5%|▍         | 172/3769 [06:37<2:06:58,  2.12s/it]  5%|▍         | 173/3769 [06:40<2:13:49,  2.23s/it]  5%|▍         | 174/3769 [06:42<2:19:23,  2.33s/it]  5%|▍         | 175/3769 [06:44<2:10:36,  2.18s/it]  5%|▍         | 176/3769 [06:46<2:09:03,  2.16s/it]  5%|▍         | 177/3769 [06:48<2:05:26,  2.10s/it]  5%|▍         | 178/3769 [06:51<2:12:04,  2.21s/it]  5%|▍         | 179/3769 [06:53<2:08:13,  2.14s/it]  5%|▍         | 180/3769 [06:55<2:14:32,  2.25s/it]  5%|▍         | 181/3769 [06:57<2:14:34,  2.25s/it]  5%|▍         | 182/3769 [07:00<2:11:44,  2.20s/it]  5%|▍         | 183/3769 [07:02<2:19:18,  2.33s/it]  5%|▍         | 184/3769 [07:04<2:15:26,  2.27s/it]  5%|▍         | 185/3769 [07:06<2:06:55,  2.12s/it]  5%|▍         | 186/3769 [07:09<2:20:03,  2.35s/it]  5%|▍         | 187/3769 [07:11<2:18:00,  2.31s/it]  5%|▍         | 188/3769 [07:14<2:17:33,  2.30s/it]  5%|▌         | 189/3769 [07:16<2:14:30,  2.25s/it]  5%|▌         | 190/3769 [07:18<2:07:41,  2.14s/it]  5%|▌         | 191/3769 [07:19<2:03:57,  2.08s/it]  5%|▌         | 192/3769 [07:22<2:13:20,  2.24s/it]  5%|▌         | 193/3769 [07:25<2:20:26,  2.36s/it]  5%|▌         | 194/3769 [07:27<2:17:07,  2.30s/it]  5%|▌         | 195/3769 [07:29<2:10:14,  2.19s/it]  5%|▌         | 196/3769 [07:31<2:08:59,  2.17s/it]  5%|▌         | 197/3769 [07:33<2:06:56,  2.13s/it]  5%|▌         | 198/3769 [07:35<2:06:42,  2.13s/it]  5%|▌         | 199/3769 [07:37<2:10:32,  2.19s/it]  5%|▌         | 200/3769 [07:40<2:10:07,  2.19s/it]  5%|▌         | 201/3769 [07:42<2:13:40,  2.25s/it]  5%|▌         | 202/3769 [07:45<2:21:23,  2.38s/it]  5%|▌         | 203/3769 [07:46<2:10:33,  2.20s/it]  5%|▌         | 204/3769 [07:49<2:10:53,  2.20s/it]  5%|▌         | 205/3769 [07:51<2:07:01,  2.14s/it]  5%|▌         | 206/3769 [07:53<2:11:52,  2.22s/it]  5%|▌         | 207/3769 [07:55<2:14:44,  2.27s/it]  6%|▌         | 208/3769 [07:58<2:12:46,  2.24s/it]  6%|▌         | 209/3769 [08:00<2:16:24,  2.30s/it]  6%|▌         | 210/3769 [08:02<2:18:11,  2.33s/it]  6%|▌         | 211/3769 [08:05<2:16:45,  2.31s/it]  6%|▌         | 212/3769 [08:07<2:09:37,  2.19s/it]  6%|▌         | 213/3769 [08:10<2:36:09,  2.63s/it]  6%|▌         | 214/3769 [08:12<2:27:26,  2.49s/it]  6%|▌         | 215/3769 [08:14<2:16:50,  2.31s/it]  6%|▌         | 216/3769 [08:17<2:18:35,  2.34s/it]  6%|▌         | 217/3769 [08:19<2:08:47,  2.18s/it]  6%|▌         | 218/3769 [08:20<2:01:25,  2.05s/it]  6%|▌         | 219/3769 [08:23<2:12:32,  2.24s/it]  6%|▌         | 220/3769 [08:25<2:01:18,  2.05s/it]  6%|▌         | 221/3769 [08:27<2:05:14,  2.12s/it]  6%|▌         | 222/3769 [08:29<2:03:11,  2.08s/it]  6%|▌         | 223/3769 [08:31<2:04:18,  2.10s/it]  6%|▌         | 224/3769 [08:34<2:19:32,  2.36s/it]  6%|▌         | 225/3769 [08:36<2:13:32,  2.26s/it]  6%|▌         | 226/3769 [08:39<2:20:00,  2.37s/it]  6%|▌         | 227/3769 [08:41<2:26:20,  2.48s/it]  6%|▌         | 228/3769 [08:43<2:16:46,  2.32s/it]  6%|▌         | 229/3769 [08:45<2:08:17,  2.17s/it]  6%|▌         | 230/3769 [08:47<2:00:26,  2.04s/it]  6%|▌         | 231/3769 [08:49<2:02:10,  2.07s/it]  6%|▌         | 232/3769 [08:52<2:14:19,  2.28s/it]  6%|▌         | 233/3769 [08:53<2:04:24,  2.11s/it]  6%|▌         | 234/3769 [08:56<2:07:48,  2.17s/it]  6%|▌         | 235/3769 [08:58<2:12:00,  2.24s/it]  6%|▋         | 236/3769 [09:00<2:03:57,  2.11s/it]  6%|▋         | 237/3769 [09:02<2:01:35,  2.07s/it]  6%|▋         | 238/3769 [09:04<2:02:13,  2.08s/it]  6%|▋         | 239/3769 [09:06<1:57:51,  2.00s/it]  6%|▋         | 240/3769 [09:08<1:57:11,  1.99s/it]  6%|▋         | 241/3769 [09:10<2:03:03,  2.09s/it]  6%|▋         | 242/3769 [09:12<2:00:18,  2.05s/it]  6%|▋         | 243/3769 [09:15<2:08:23,  2.18s/it]  6%|▋         | 244/3769 [09:17<2:16:09,  2.32s/it]  7%|▋         | 245/3769 [09:19<2:14:00,  2.28s/it]  7%|▋         | 246/3769 [09:21<2:06:37,  2.16s/it]  7%|▋         | 247/3769 [09:23<2:04:31,  2.12s/it]  7%|▋         | 248/3769 [09:26<2:16:48,  2.33s/it]  7%|▋         | 249/3769 [09:28<2:13:21,  2.27s/it]  7%|▋         | 250/3769 [09:31<2:17:24,  2.34s/it]  7%|▋         | 251/3769 [09:33<2:16:36,  2.33s/it]  7%|▋         | 252/3769 [09:36<2:20:23,  2.40s/it]  7%|▋         | 253/3769 [09:38<2:11:06,  2.24s/it]  7%|▋         | 254/3769 [09:40<2:06:44,  2.16s/it]  7%|▋         | 255/3769 [09:42<2:12:43,  2.27s/it]  7%|▋         | 256/3769 [09:45<2:31:11,  2.58s/it]  7%|▋         | 257/3769 [09:49<2:41:53,  2.77s/it]  7%|▋         | 258/3769 [09:51<2:32:23,  2.60s/it]  7%|▋         | 259/3769 [09:53<2:21:45,  2.42s/it]  7%|▋         | 260/3769 [09:55<2:25:46,  2.49s/it]  7%|▋         | 261/3769 [09:58<2:23:11,  2.45s/it]  7%|▋         | 262/3769 [10:00<2:20:31,  2.40s/it]

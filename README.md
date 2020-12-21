@@ -76,6 +76,12 @@ Test on the test dataset:
 ```
 python3 run.py checkpoints/car_auto_T3_trainval/ --test --dataset_root_dir DATASET_ROOT_DIR --output_dir DIR_TO_SAVE_RESULTS
 ```
+nohup python3 run.py checkpoints/car_auto_T3_train/ --dataset_root_dir /home/wrjs/pc/kitti --output_dir /home/wrjs/pc/science/Point-GNN-master/result/ >> run.log 2>&1 &
+
+
+
+python3 run.py checkpoints/car_auto_T3_trainval/ --test --dataset_root_dir /media/light/MyPassport/data/kitti --output_dir /media/light/MyPassport/data/result/Point-GNN -l 1
+
 
 ```
 usage: run.py [-h] [-l LEVEL] [--test] [--no-box-merge] [--no-box-score]

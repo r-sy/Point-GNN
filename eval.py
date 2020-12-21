@@ -19,8 +19,8 @@ from util.summary_util import write_summary_scale
 parser = argparse.ArgumentParser(description='Repeated evaluation of PointGNN.')
 parser.add_argument('eval_config_path', type=str,
                    help='Path to train_config')
-parser.add_argument('--dataset_root_dir', type=str, default='../dataset/kitti/',
-                   help='Path to KITTI dataset. Default="../dataset/kitti/"')
+parser.add_argument('--dataset_root_dir', type=str, default='/media/light/MyPassport/data/kitti/',
+                   help='Path to KITTI dataset. Default="/media/light/MyPassport/data/kitti/"')
 parser.add_argument('--dataset_split_file', type=str,
                     default='',
                    help='Path to KITTI dataset split file.'
@@ -31,7 +31,7 @@ eval_config = load_train_config(args.eval_config_path)
 DATASET_DIR = args.dataset_root_dir
 if args.dataset_split_file == '':
     DATASET_SPLIT_FILE = os.path.join(DATASET_DIR,
-        './3DOP_splits/'+eval_config['eval_dataset'])
+        '3DOP_splits/'+eval_config['eval_dataset'])
 else:
     DATASET_SPLIT_FILE = args.dataset_split_file
 

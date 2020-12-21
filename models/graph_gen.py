@@ -21,6 +21,7 @@ def multi_layer_downsampling(points_xyz, base_voxel_size, levels=[1],
         if np.isclose(last_level, level):
             downsampled_list.append(np.copy(downsampled_list[-1]))
         else:
+            #add_rnd3d: boolean, whether to add random offset when downsampling.
             if add_rnd3d:
                 xyz_idx = (points_xyz-xyz_offset+
                     base_voxel_size*level*np.random.random((1,3)))//\
@@ -34,12 +35,18 @@ def multi_layer_downsampling(points_xyz, base_voxel_size, levels=[1],
                 sorted_points_xyz = points_xyz[sorted_order]
                 _, lens = np.unique(sorted_keys, return_counts=True)
                 indices = np.hstack([[0], lens[:-1]]).cumsum()
+                #下采样
+                #reduceat方法需要输入一个数组以及一个索引值列表作为参数,reduce方法 (对数组的reduce计算结果等价于对数组元素求和)
                 downsampled_xyz = np.add.reduceat(
                     sorted_points_xyz, indices, axis=0)/lens[:,np.newaxis]
                 downsampled_list.append(np.array(downsampled_xyz))
             else:
                 pcd = open3d.PointCloud()
                 pcd.points = open3d.Vector3dVector(points_xyz)
+                # 下采样
+                # voxel_down_sample（把点云分配在三维的网格中，取平均值）
+                # uniform_down_sample (可以通过收集每第n个点来对点云进行下采样)
+                # select_down_sample (使用带二进制掩码的select_down_sample仅输出所选点。选定的点和未选定的点并可视化。）
                 downsampled_xyz = np.asarray(open3d.voxel_down_sample(
                     pcd, voxel_size = base_voxel_size*level).points)
                 downsampled_list.append(downsampled_xyz)
@@ -62,6 +69,7 @@ def multi_layer_downsampling_select(points_xyz, base_voxel_size, levels=[1],
     returns: vertex_coord_list, keypoint_indices_list
     """
     # Voxel downsampling
+    #下采样得到的顶点坐标list
     vertex_coord_list = multi_layer_downsampling(
         points_xyz, base_voxel_size, levels=levels, add_rnd3d=add_rnd3d)
     num_levels = len(vertex_coord_list)

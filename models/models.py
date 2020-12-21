@@ -116,7 +116,7 @@ class MultiLayerFastLocalGraphModelV2(object):
                 tfeatures_list = []
                 tfeatures = t_initial_vertex_features
                 tfeatures_list.append(tfeatures)
-                for idx in range(len(self._layer_configs)-1):
+                for idx in range(len(self._layer_configs)-1): # 总共五层 layer1、2、3、4和output
                     layer_config = self._layer_configs[idx]
                     layer_scope = layer_config['scope']
                     layer_type = layer_config['type']
@@ -126,6 +126,7 @@ class MultiLayerFastLocalGraphModelV2(object):
                     t_keypoint_indices = t_keypoint_indices_list[graph_level]
                     t_edges = t_edges_list[graph_level]
                     with tf.variable_scope(layer_scope, reuse=tf.AUTO_REUSE):
+                        # 根据config文件，实例化GNN各个层
                         flgn = self._default_layers_type[layer_type]
                         print('@ level %d Graph, Add layer: %s, type: %s'%
                             (graph_level, layer_scope, layer_type))
@@ -138,6 +139,7 @@ class MultiLayerFastLocalGraphModelV2(object):
                                     t_edges,
                                     **layer_kwargs)
                         else:
+                            # 进行点集特征提取，或者apply one layer graph network on a graph
                             tfeatures = flgn.apply_regular(
                                 tfeatures,
                                 t_vertex_coordinates,
@@ -147,6 +149,7 @@ class MultiLayerFastLocalGraphModelV2(object):
 
                         tfeatures_list.append(tfeatures)
                         print('Feature Dim:' + str(tfeatures.shape[-1]))
+                # 判断最后一层output层是不是分类预测层
                 predictor_config = self._layer_configs[-1]
                 assert (predictor_config['type']=='classaware_predictor' or
                     predictor_config['type']=='classaware_predictor_128' or
@@ -155,6 +158,7 @@ class MultiLayerFastLocalGraphModelV2(object):
                 print('Final Feature Dim:'+str(tfeatures.shape[-1]))
                 with tf.variable_scope(predictor_config['scope'],
                 reuse=tf.AUTO_REUSE):
+                # 进行分类回归
                     logits, box_encodings =  predictor.apply_regular(tfeatures,
                         num_classes=self.num_classes,
                         box_encoding_len=self.box_encoding_len,

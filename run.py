@@ -37,8 +37,8 @@ parser.add_argument('--no-box-merge', dest='use_box_merge',
 parser.add_argument('--no-box-score', dest='use_box_score',
                     action='store_false', default='True',
                    help='Disable box score.')
-parser.add_argument('--dataset_root_dir', type=str, default='../dataset/kitti/',
-                   help='Path to KITTI dataset. Default="../dataset/kitti/"')
+parser.add_argument('--dataset_root_dir', type=str, default='/home/wrjs/pc/kitti/',
+                   help='Path to KITTI dataset. Default="/home/wrjs/pc/kitti/"')
 parser.add_argument('--dataset_split_file', type=str,
                     default='',
                    help='Path to KITTI dataset split file.'
@@ -54,7 +54,7 @@ USE_BOX_MERGE = args.use_box_merge
 USE_BOX_SCORE = args.use_box_score
 DATASET_DIR = args.dataset_root_dir
 if args.dataset_split_file == '':
-    DATASET_SPLIT_FILE = os.path.join(DATASET_DIR, './3DOP_splits/val.txt')
+    DATASET_SPLIT_FILE = os.path.join(DATASET_DIR, '3DOP_splits/val.txt')
 else:
     DATASET_SPLIT_FILE = args.dataset_split_file
 if args.output_dir == '':

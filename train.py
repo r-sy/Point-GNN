@@ -27,8 +27,8 @@ parser.add_argument('train_config_path', type=str,
                    help='Path to train_config')
 parser.add_argument('config_path', type=str,
                    help='Path to config')
-parser.add_argument('--dataset_root_dir', type=str, default='../dataset/kitti/',
-                   help='Path to KITTI dataset. Default="../dataset/kitti/"')
+parser.add_argument('--dataset_root_dir', type=str, default='/home/wrjs/pc/kitti/',
+                   help='Path to KITTI dataset. Default="/home/wrjs/pc/kitti/"')
 parser.add_argument('--dataset_split_file', type=str,
                     default='',
                    help='Path to KITTI dataset split file.'
@@ -40,7 +40,7 @@ train_config = load_train_config(args.train_config_path)
 DATASET_DIR = args.dataset_root_dir
 if args.dataset_split_file == '':
     DATASET_SPLIT_FILE = os.path.join(DATASET_DIR,
-        './3DOP_splits/'+train_config['train_dataset'])
+        '3DOP_splits/'+train_config['train_dataset'])
 else:
     DATASET_SPLIT_FILE = args.dataset_split_file
 config_complete = load_config(args.config_path)
@@ -373,9 +373,11 @@ metrics_update_ops.update(t_classwise_loc_loss_update_ops)
 
 # optimizers ================================================================
 global_step = tf.Variable(0, dtype=tf.int32, trainable=False)
+# 训练学习率指数下降
 t_learning_rate = tf.train.exponential_decay(train_config['initial_lr'],
     global_step, train_config['decay_step'], train_config['decay_factor'],
     staircase=train_config.get('is_staircase', True))
+# 从一个集合中取出变量
 update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
 optimizer_dict = {
     'sgd': tf.train.GradientDescentOptimizer,
@@ -389,18 +391,22 @@ optimizer_kwargs_dict = {
     'rmsprop':  {'momentum': 0.9, 'decay': 0.9, 'epsilon': 1.0},
     'adam': {}
 }
+# 设置优化器并加入参数，sgd
 optimizer_class = optimizer_dict[train_config['optimizer']]
 optimizer_kwargs = optimizer_kwargs_dict[train_config['optimizer']]
 if 'optimizer_kwargs' in train_config:
     optimizer_kwargs.update(train_config['optimizer_kwargs'])
 optimizer = optimizer_class(t_learning_rate, **optimizer_kwargs)
 grads_cross_gpu = []
+# 此函数指定某些操作执行的依赖关系
 with tf.control_dependencies(update_ops):
     for gi in range(NUM_GPU):
+        # 计算梯度
         with tf.device('/gpu:%d'%gi):
             grads = optimizer.compute_gradients(
                 input_tensor_sets[gi]['t_total_loss'])
             grads_cross_gpu.append(grads)
+# average_gradients用于在使用多GPU并行计算时，用CPU进行梯度平均计算，optimizer.apply_gradients用得到的梯度进行特征和参数更新
 grads_cross_gpu = average_gradients(grads_cross_gpu)
 train_op = optimizer.apply_gradients(grads_cross_gpu, global_step=global_step)
 fetches = {
@@ -493,22 +499,30 @@ data_provider = DataProvider(fetch_data, batch_data,
 # Training session ==========================================================
 batch_size = train_config.get('batch_size', 1)
 print('batch size=' + str(batch_size))
+# 实例化一个Saver对象
 saver = tf.train.Saver()
+# 获得当前默认计算图
 graph = tf.get_default_graph()
+# tf.GPUOptions可以作为设置tf.ConfigProto时的一个参数选项，一般用于限制GPU资源的使用。
 if train_config['gpu_memusage'] < 0:
-    gpu_options = tf.GPUOptions(allow_growth=True)
+    gpu_options = tf.GPUOptions(allow_growth=True) #动态申请显存
 else:
     if train_config['gpu_memusage'] < -10:
         gpu_options = tf.GPUOptions()
     else:
         gpu_options = tf.GPUOptions(
-            per_process_gpu_memory_fraction=train_config['gpu_memusage'])
+            per_process_gpu_memory_fraction=train_config['gpu_memusage']) # 限制GPU的使用率
 batch_ctr = 0
 batch_gradient_list = []
+# tf.ConfigProto一般用在创建session的时候，用来对session进行参数配置。
+# log_device_placement=True : 是否打印设备分配日志
+# allow_soft_placement=True ： 如果你指定的设备不存在，允许TF自动分配设备
+# tf.GPUOptions可以作为设置tf.ConfigProto时的一个参数选项，一般用于限制GPU资源的使用。
 with tf.Session(graph=graph,
     config=tf.ConfigProto(
     allow_soft_placement=True, gpu_options=gpu_options,)) as sess:
     sess.run(tf.variables_initializer(tf.global_variables()))
+    # 该类作用是获得保存节点文件的状态，这里实例化该类为states
     states = tf.train.get_checkpoint_state(train_config['train_dir'])
     if states is not None:
         print('Restore from checkpoint %s' % states.model_checkpoint_path)

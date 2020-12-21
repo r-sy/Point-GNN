@@ -5,6 +5,7 @@ from functools import partial
 import tensorflow as tf
 import numpy as np
 import tensorflow.contrib.slim as slim
+from models import layers
 
 def instance_normalization(features):
     with tf.variable_scope(None, default_name='IN'):
@@ -102,7 +103,8 @@ def multi_layer_neural_network_fn(features, Ks=(64, 32, 64), is_logits=False,
                 activation_fn=activation_fn_dict[activation_type],
                 normalizer_fn=normalization_fn_dict[normalization_type])
     return features
-
+# 图离散最大函数
+# 函数功能为对输入数据data进行分割，并按对应下标进行求max。
 def graph_scatter_max_fn(point_features, point_centers, num_centers):
     aggregated = tf.math.unsorted_segment_max(point_features,
         point_centers, num_centers, name='scatter_max')
@@ -117,6 +119,36 @@ def graph_scatter_mean_fn(point_features, point_centers, num_centers):
     aggregated = tf.math.unsorted_segment_mean(point_features,
         point_centers, num_centers, name='scatter_mean')
     return aggregated
+
+def multi_attentions_fn(inputs, nb_classes, nb_nodes, training, attn_drop, ffd_drop,
+        bias_mat, hid_units, n_heads, activation=tf.nn.elu, residual=False):
+    attns = []
+    for _ in range(n_heads[0]):
+        attns.append(layers.attn_head(inputs, bias_mat=bias_mat,
+            out_sz=hid_units[0], activation=activation,
+            in_drop=ffd_drop, coef_drop=attn_drop, residual=False))
+    h_1 = tf.concat(attns, axis=-1)
+
+    #print("h_1.shape = ", h_1)
+    for i in range(1, len(hid_units)):
+        h_old = h_1
+        attns = []
+        for _ in range(n_heads[i]):
+            attns.append(layers.attn_head(h_1, bias_mat=bias_mat,
+                out_sz=hid_units[i], activation=activation,
+                in_drop=ffd_drop, coef_drop=attn_drop, residual=residual))
+        h_1 = tf.concat(attns, axis=-1)
+    logits = h_1
+    # print("attns = ", attns)
+    # out = []
+    # for i in range(n_heads[-1]):
+    #     out.append(layers.attn_head(h_1, bias_mat=bias_mat,
+    #         out_sz=nb_classes, activation=lambda x: x,
+    #         in_drop=ffd_drop, coef_drop=attn_drop, residual=False))
+    # print("out.shape = ", out)
+    # logits = tf.add_n(out) / n_heads[-1]
+
+    return logits
 
 class ClassAwarePredictor(object):
     """A class to predict 3D bounding boxes and class labels."""
@@ -240,7 +272,7 @@ class PointSetPooling(object):
             keypoint_indices: a [K, 1] tensor. Indices of K keypoints.
             set_indices: a [S, 2] tensor. S pairs of (point_index, set_index).
             i.e. (i, j) indicates point[i] belongs to the point set created by
-            grouping around keypoint[j].
+            grouping around keypoint[j]. 
             point_MLP_depth_list: a list of MLP units to extract point features.
             point_MLP_normalization_type: the normalization function of MLP.
             point_MLP_activation_type: the activation function of MLP.
